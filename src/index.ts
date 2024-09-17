@@ -11,6 +11,8 @@ interface Person {
     isStudent: false,
   };
   
+  console.log("Person:", person);
+  
   interface Book {
     title: string;
     author: string;
@@ -23,6 +25,8 @@ interface Person {
     publishedYear: 1925,
   };
   
+  console.log("Book:", book);
+  
   // 2. Massivlar
   const numbers: number[] = [1, 2, 3, 4, 5];
   
@@ -30,15 +34,22 @@ interface Person {
     return arr.reduce((sum, num) => sum + num, 0);
   }
   
+  console.log("Sum of numbers array:", sumArray(numbers));
+  
   const fruits: string[] = ["apple", "banana", "cherry"];
   
   function capitalizeArray(arr: string[]): string[] {
     return arr.map(fruit => fruit.toUpperCase());
   }
   
+  console.log("Capitalized fruits:", capitalizeArray(fruits));
+  
   // 3. Tuple
   const studentRecord: [string, number, boolean] = ["Alice", 22, true];
   const coordinate: [number, number] = [10, 20];
+  
+  console.log("Student Record:", studentRecord);
+  console.log("Coordinate:", coordinate);
   
   // 4. any
   let variable: any;
@@ -48,9 +59,14 @@ interface Person {
   
   const anyArray: any[] = ["text", 42, false];
   
+  console.log("Any array:", anyArray);
+  
   function printArray(arr: any[]): void {
     arr.forEach(item => console.log(item));
   }
+  
+  console.log("Print anyArray:");
+  printArray(anyArray);
   
   // 5. unknown
   let unknownVariable: unknown;
@@ -65,6 +81,8 @@ interface Person {
     return "Not a string";
   }
   
+  console.log("Check and Convert (unknownVariable):", checkAndConvert(unknownVariable));
+  
   // 6. never
   function throwError(message: string): never {
     throw new Error(message);
@@ -74,10 +92,15 @@ interface Person {
     while (true) {}
   }
   
+  // Uncomment to test (will crash execution)
+  // throwError("This is an error!");
+  
   // 7. Funksiyalar
   function addNumbers(a: number, b: number): number {
     return a + b;
   }
+  
+  console.log("Sum of 2 and 3:", addNumbers(2, 3));
   
   function formatDate(date: Date): string {
     const year = date.getFullYear();
@@ -85,6 +108,8 @@ interface Person {
     const day = date.getDate().toString().padStart(2, '0');
     return `${year}-${month}-${day}`;
   }
+  
+  console.log("Formatted Date:", formatDate(new Date()));
   
   // 8. Enum
   enum DaysOfWeek {
@@ -98,8 +123,10 @@ interface Person {
   }
   
   function printDay(day: DaysOfWeek): void {
-    console.log(DaysOfWeek[day]);
+    console.log("Day of the week:", DaysOfWeek[day]);
   }
+  
+  printDay(DaysOfWeek.Tuesday);
   
   // 9. Intersection Tiplari
   interface PersonInterface {
@@ -112,14 +139,17 @@ interface Person {
     department: string;
   }
   
-  type Worker = PersonInterface & Employee;
+  // Renamed 'Worker' to 'EmployeeWorker'
+  type EmployeeWorker = PersonInterface & Employee;
   
-  const worker: Worker = {
+  const employeeWorker: EmployeeWorker = {
     name: "Jane Doe",
     age: 30,
     employeeId: 12345,
     department: "HR",
   };
+  
+  console.log("EmployeeWorker:", employeeWorker);
   
   // 10. Interfeyslar
   interface Vehicle {
@@ -141,6 +171,8 @@ interface Person {
     isElectric: true,
   };
   
+  console.log("Car:", car);
+  
   // 11. Type Alias
   type Address = {
     street: string;
@@ -161,6 +193,8 @@ interface Person {
     },
   };
   
+  console.log("Person with Address:", personWithAddress);
+  
   // 12. Aralash Mashqlar
   interface Student {
     name: string;
@@ -180,6 +214,8 @@ interface Person {
     grades: [85, 90, 78],
     address: ["Elm St", 123],
   };
+  
+  console.log("Student Summary:", getStudentSummary(student));
   
   // 13. Enum, Type Alias va Intersection
   enum OrderStatus {
@@ -209,4 +245,6 @@ interface Person {
     customerId: 789,
     name: "Sarah",
   };
+  
+  console.log("Customer Order:", customerOrder);
   
